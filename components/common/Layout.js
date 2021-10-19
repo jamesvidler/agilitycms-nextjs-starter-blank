@@ -2,11 +2,11 @@ import { getPageTemplate } from "components/agility-pageTemplates";
 import { handlePreview } from "@agility/nextjs";
 import { useRouter } from "next/router";
 import Error from "next/error";
-import PreviewBar from "./PreviewBar";
 import SEO from "./SEO";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import LoadingWidget from "./LoadingWidget";
+import PreviewWiget from "./PreviewWidget";
 
 // set up handle preview
 const isPreview = handlePreview();
@@ -50,7 +50,7 @@ function Layout(props) {
         {isPreview && <LoadingWidget message="Loading Preview Mode" />}
         {!isPreview && (
           <div id="site">
-            <PreviewBar {...props} />
+            <PreviewWiget isPreview={props.isPreview} isDevelopmentMode={props.isDevelopmentMode} />
             <div className="flex flex-col min-h-screen">
               <SiteHeader {...props} />
               <main className="flex-grow">
