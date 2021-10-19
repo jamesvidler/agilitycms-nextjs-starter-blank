@@ -168,8 +168,10 @@ SiteHeader.getCustomInitialProps = async function ({
     let header = await api.getContentList({
       referenceName: "siteheader",
       languageCode: languageCode,
-	  take: 1
+      take: 1
     });
+
+    console.log(header);
 
     // if we have a header, set as content item
     if (header && header.items && header.items.length > 0) {
@@ -207,7 +209,7 @@ SiteHeader.getCustomInitialProps = async function ({
   // return clean object...
   return {
     siteName: contentItem.fields.siteName,
-    logo: contentItem.fields.logo,
+    logo: contentItem.fields.siteLogo,
     links,
   };
 };
