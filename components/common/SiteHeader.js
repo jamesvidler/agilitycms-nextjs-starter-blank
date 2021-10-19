@@ -164,18 +164,15 @@ SiteHeader.getCustomInitialProps = async function ({
   let links = [];
 
   try {
-    // try to fetch our site header
+    // try to fetch our site header (use Sync)
     let header = await api.getContentList({
       referenceName: "siteheader",
-      languageCode: languageCode,
-      take: 1
+      languageCode: languageCode
     });
 
-    console.log(header);
-
     // if we have a header, set as content item
-    if (header && header.items && header.items.length > 0) {
-      contentItem = header.items[0];
+    if (header) {
+      contentItem = header.items ? header.items[0] : header[0];
 
       // else return null
     } else {
